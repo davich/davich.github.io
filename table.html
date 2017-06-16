@@ -398,16 +398,19 @@ function talk() {
     $('body').css('background-color', '#ffe391');
   }, 75*1000);
   red = setTimeout(function() {
-    $('body').css('background-color', '#ff5454');
+    $('body').css('background-color', '#ff2222');
   }, 90*1000);
 }
 
 function progress(startTime, duration, color) {
   $('#progress').css('background-color', color);
+  _progress(startTime, duration);
+}
 
+function _progress(startTime, duration) {
   var percent = 100 * ((new Date()).getTime() - startTime.getTime()) / (1000*duration);
   $('#progress').css('width', percent + '%');
-  progressTimeout = setTimeout(function() { progress(startTime, duration, color); }, 5);
+  progressTimeout = setTimeout(function() { _progress(startTime, duration); }, 1);
 }
 
 function clear() {
@@ -419,8 +422,16 @@ function clear() {
   clearTimeout(previewTimeout);
 }
 
-$(document).on('click touch', 'body', function () {
+$(document).on('click touch', 'body', function() {
   changeQuestion();
+});
+
+$(document).on('click touch', '#stop', function(e) {
+  clear();
+  $('#progress').css('width', 0);
+  $('#question').html('New Table Topic');
+  $('#instructions').html('');
+  e.stopPropagation();
 });
 </script>
 <style>
@@ -429,19 +440,45 @@ $(document).on('click touch', 'body', function () {
   top: 40%;
   transform: perspective(1px) translateY(-50%);
 }
+#contents h1 {
+  text-align: center;
+}
+#progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: green;
+  width: 0%;
+  height: 5px;
+}
 body {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+#stop {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 10%;
+  border: 2px solid red;
+  background-color: #ffdddd;
+  text-align: center;
+  z-index: 1000;
 }
 </style>
 
 </head>
-<body onclick="changeQuestion()">
-  <div id="progress" style="position: absolute; top: 0; left: 0; background-color: green; width: 0%; height: 5px;"></div>
+<body>
+  <div id="progress"></div>
 
   <div id="contents">
-    <h1 style="text-align: center;" id="instructions"></h1>
+    <h1 id="instructions"></h1>
     <br/><br/>
-    <h1 style="text-align: center;" id="question">New Table Topic</h1>
+    <h1 id="question">New Table Topic</h1>
   </div>
+
+  <div id="stop"><h1>STOP</h1></div>
 </body>
 </html>
