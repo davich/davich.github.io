@@ -421,7 +421,9 @@
     function _progress(startTime, duration) {
       var percent = 100 * ((new Date()).getTime() - startTime.getTime()) / (1000*duration);
       $('#progress').css('width', percent + '%');
-      progressTimeout = setTimeout(function() { _progress(startTime, duration); }, 1);
+      if (percent < 100) {
+        progressTimeout = setTimeout(function() { _progress(startTime, duration); }, 1);
+      }
     }
 
     function clear() {
