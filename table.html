@@ -388,51 +388,70 @@
     }
 
     var progressMultiplier = 1;
-    var previewTime = 5;
-    var previewTimeout, green, orange, red, progressTimeout;
+    var previewTime = 8;
+    var timeouts = [];
+    var progressTimeouts = [];
     function changeQuestion() {
       $('#question').html(question());
       $('#instructions').html('Wait!');
       clear();
-      progress(new Date(), previewTime, 'red');
-      previewTimeout = setTimeout(talk, previewTime*1000);
+      progress(previewTime, 'red');
+      timeouts.push(setTimeout(talk, previewTime*1000));
     }
 
     function talk() {
       $('#instructions').html('Talk!');
-      clear();
-      progress(new Date(), 60, 'green');
-      green = setTimeout(function() {
+      progress(60, 'green');
+      doAfter(function() {
         $('body').css('background-color', '#d5ffc9');
+        progress(15, '#ffe391');
       }, 60*1000);
-      orange = setTimeout(function() {
+      doAfter(function() {
         $('body').css('background-color', '#ffe391');
+        progress(15, '#ff2222');
       }, 75*1000);
-      red = setTimeout(function() {
+      doAfter(function() {
         $('body').css('background-color', '#ff2222');
       }, 90*1000);
     }
 
-    function progress(startTime, duration, color) {
+    function doAfter(fn, time) {
+      var now = new Date();
+      return _doAfter(now.getTime() + time, fn)
+    }
+
+    function _doAfter(time, fn) {
+      if ((new Date()).getTime() >= time) {
+        fn()
+      } else {
+        timeouts.push(setTimeout(function() { _doAfter(time, fn) }, 1000));
+      }
+    }
+
+    function progress(duration, color) {
+      clearProgressTimeouts();
       $('#progress').css('background-color', color);
-      _progress(startTime, duration);
+      _progress(new Date(), duration);
     }
 
     function _progress(startTime, duration) {
       var percent = 100 * ((new Date()).getTime() - startTime.getTime()) / (1000*duration);
       $('#progress').css('width', percent + '%');
       if (percent < 100) {
-        progressTimeout = setTimeout(function() { _progress(startTime, duration); }, 1);
+        progressTimeouts.push(setTimeout(function() { _progress(startTime, duration); }, 1));
       }
+    }
+
+    function clearProgressTimeouts() {
+      progressTimeouts.forEach(function(t) { clearTimeout(t) });
+      progressTimeouts = [];
     }
 
     function clear() {
       $('body').css('background-color', '#fff');
-      clearTimeout(green);
-      clearTimeout(orange);
-      clearTimeout(red);
-      clearTimeout(progressTimeout);
-      clearTimeout(previewTimeout);
+      clearProgressTimeouts();
+      timeouts.forEach(function(t) { clearTimeout(t) });
+      timeouts = [];
     }
 
     $(document).on('click touch', 'body', function() {
@@ -474,7 +493,6 @@
       width: 100%;
       bottom: 0;
       left: 0;
-      height: 10%;
       border: 2px solid red;
       background-color: #ffdddd;
       text-align: center;
