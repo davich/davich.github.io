@@ -465,6 +465,10 @@
       $('#instructions').html('');
       e.stopPropagation();
     });
+
+    $(document).on('click touch', '#suggestion-link', function(e) {
+      e.stopPropagation();
+    });
   </script>
   <style>
     #contents {
@@ -491,6 +495,7 @@
     #stop {
       position: absolute;
       width: 100%;
+      min-height: 10%;
       bottom: 0;
       left: 0;
       border: 2px solid red;
@@ -498,10 +503,16 @@
       text-align: center;
       z-index: 1000;
     }
+    #suggestion-link {
+      padding: 15px;
+      position: absolute;
+      right: 10px;
+    }
   </style>
 </head>
 <body>
   <div id="progress"></div>
+  <a href="https://goo.gl/forms/h8YwOQjBuuR7EAFi1" target="_blank" id="suggestion-link">Suggest a Table Topic >></a>
 
   <div id="contents">
     <h1 id="instructions"></h1>
