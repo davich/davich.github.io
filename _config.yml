@@ -30,8 +30,8 @@ lang: en-us # used in HTML lang attributes
 greeting:
   title: Welcome
   text: >
-    I'm a software developer/manager from Melbourne, Australia.
-    I like to be in the outdoors. Camping, climbing, slacklining, hiking, etc.
+    I'm a software developer/manager from Melbourne, Australia.<br>
+    I like to be in the outdoors. Camping, climbing, slacklining, hiking, etc.<br>
     I like playing music.
 # - displayed at the bottom
 closing-head: _Your closing_
