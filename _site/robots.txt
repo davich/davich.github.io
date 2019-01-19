@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://davidcarlin.com.au/sitemap.xml
