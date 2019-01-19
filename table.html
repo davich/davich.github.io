@@ -376,7 +376,6 @@ function question() {
   return questions[index];
 }
 
-var progressMultiplier = 1;
 var previewTime = 5;
 var previewTimeout, green, orange, red, progressTimeout;
 function changeQuestion() {
@@ -439,7 +438,7 @@ body {
   <div id="progress" style="position: absolute; top: 0; left: 0; background-color: green; width: 0%; height: 5px;"></div>
 
   <div id="contents">
-    <h1 style="text-align: center;" id="instructions"></h1>
+    <h1 style="text-align: center; font-size: 150%;" id="instructions"></h1>
     <br/><br/>
     <h1 style="text-align: center;" id="question">New Table Topic</h1>
   </div>
