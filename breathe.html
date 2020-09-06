@@ -1,4 +1,5 @@
 <html>
+<head>
   <style type="text/css">
     #outer {
       margin: 30px auto;
@@ -88,7 +89,18 @@
       font-size: 30px;
     }
   </style>
-</html>
+  <script type="text/javascript">
+  const requestWakeLock = async () => {
+    try {
+      const wakeLock = await navigator.wakeLock.request('screen');
+    } catch (err) {
+      // the wake lock request fails - usually system related, such low as battery
+      console.log(`${err.name}, ${err.message}`);
+    }
+  }
+  requestWakeLock();  
+  </script>
+</head>
 <div id="outer">
   <div id="ball"></div>
   <div id="triangle_backing"></div>
@@ -99,3 +111,4 @@
   <div id="breathe_hold">hold</div>
   <div id="breathe_out">out</div>
 </div>
+</html>
