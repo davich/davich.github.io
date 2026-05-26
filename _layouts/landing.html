@@ -1,104 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 {% include topcomment.html %}
 <html lang="{{ site.lang }}">
-
   {% include head.html %}
 
   <body class="landing">
-
     <!-- Page Wrapper -->
     <div id="page-wrapper">
-
       {% include header.html %}
 
-        <!-- Banner -->
-          <section id="banner">
-            <div class="inner">
-              <h1>{{ site.title | upcase }}</h1>
-              <p>{{ site.description }}</p>
-              <!--
+      <!-- Banner -->
+      <section id="banner">
+        <div class="inner">
+          <h1>{{ site.title | upcase }}</h1>
+          <p>{{ site.description }}</p>
+          <!--
               <ul class="actions">
                 <li><a href="#" class="button special">Activate</a></li>
               </ul>
               -->
-            </div>{%
-            if site.greeting %}
-            <a href="#greeting" class="more scrolly">Continue</a>{%
-            else %}
-            <a href="#landing_pages" class="more scrolly">Continue</a>{%
-            endif %}
-          </section>
-          {%
-          if site.greeting %}
-        <!-- One -->
-          <section id="greeting" class="wrapper style1 special" style="opacity: 0.98">
-            <div class="inner">
-              <header class="major">
-                <h2>{% if site.greeting.title %}{{ site.greeting.title }}{% else %}{{ site.title }}{% endif %}</h2>
-                <p>{% if site.greeting.text %}{{ site.greeting.text | markdownify }}{% else %}{{ site.description | markdownify }}{% endif %}</p>
-              </header>
-              <ul class="icons major">{%
-              for socloc in site.social limit:3 %}{%
-                if socloc[1] %}{%
-                  if socloc[0] == 'email' %}
-                <li><a target="_blank" href="{%
+        </div>
+        {% if site.greeting %}
+        <a href="#greeting" class="more scrolly">Continue</a>{% else %}
+        <a href="#landing_pages" class="more scrolly">Continue</a>{% endif %}
+      </section>
+      {% if site.greeting %}
+      <!-- One -->
+      <section
+        id="greeting"
+        class="wrapper style1 special"
+        style="opacity: 0.98"
+      >
+        <div class="inner">
+          <header class="major">
+            <h2>
+              {% if site.greeting.title %}{{ site.greeting.title }}{% else %}{{
+              site.title }}{% endif %}
+            </h2>
+            <p>
+              {% if site.greeting.text %}{{ site.greeting.text | markdownify
+              }}{% else %}{{ site.description | markdownify }}{% endif %}
+            </p>
+          </header>
+          <ul class="icons major">
+            {% for socloc in site.social limit:3 %}{% if socloc[1] %}{% if
+            socloc[0] == 'email' %}
+            <li>
+              <a
+                target="_blank"
+                href="{%
                     if socloc[1] contains '@' %}mailto:{{ socloc[1] }}{%
                     else %}{{ socloc[1] }}{%
-                    endif %}" class="icon fa-envelope major style1"
-                       ><span class="label">E-mail</span></a></li>{%
-                  else %}
-                <li><a target="_blank" href="{{ socloc[1] }}" class="icon fa-{{ socloc[0] }} major style{% cycle 1, 2, 3 %}"
-                       ><span class="label">{{ socloc[0] }}</span></a></li>{%
-                  endif %}{%
-                endif %}{%
-              endfor %}
-              </ul>
-            </div>
-          </section>{%
-          endif %}
+                    endif %}"
+                class="icon fa-envelope major style1"
+                ><span class="label">E-mail</span></a
+              >
+            </li>
+            {% else %}
+            <li>
+              <a
+                target="_blank"
+                href="{{ socloc[1] }}"
+                class="icon fa-{{ socloc[0] }} major style{% cycle 1, 2, 3 %}"
+                ><span class="label">{{ socloc[0] }}</span></a
+              >
+            </li>
+            {% endif %}{% endif %}{% endfor %}
+          </ul>
+        </div>
+      </section>
+      {% endif %}
 
+      <section
+        id="greeting"
+        class="wrapper style2 special"
+        style="opacity: 0.98"
+      >
+        <div class="inner">
+          <header class="major">
+            <p>
+              I used to work in tech and now I don't. At least not at the
+              moment. I just do whatever I want every day. It's lovely!<br />
+              But I do still like tech.<br />
+              Here are a couple of videos I've made for work
+            </p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/Yp0LdUg8ozc"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+            <br /><br />
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/RIcBJNVyCXo"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </header>
+        </div>
+      </section>
 
-        <section id="greeting" class="wrapper style2 special" style="opacity: 0.98">
-          <div class="inner">
-            <header class="major">
-              <p>I work for Culture Amp. Primarily coding in Ruby and Elixir.<br/>
-              I'm currently the Team Lead and Tech Lead for the Share & Act team.<br/>
-              Here are a couple of videos I've made for work</p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Yp0LdUg8ozc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <br/><br/>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/RIcBJNVyCXo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </header>
-          </div>
-        </section>
+      <section
+        id="greeting"
+        class="wrapper style3 special"
+        style="opacity: 0.98"
+      >
+        <div class="inner">
+          <header class="major">
+            <p>
+              I briefly did quite well in stand-up comedy. But soon gave it away
+            </p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/NN_SYOeGwwU"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </header>
+        </div>
+      </section>
 
-        <section id="greeting" class="wrapper style3 special" style="opacity: 0.98">
-          <div class="inner">
-            <header class="major">
-              <p>I briefly did quite well in stand-up comedy. But soon gave it away</p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/NN_SYOeGwwU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </header>
-          </div>
-        </section>
+      <section
+        id="greeting"
+        class="wrapper style1 special"
+        style="opacity: 0.98"
+      >
+        <div class="inner">
+          <header class="major">
+            <p>Over the years I've done quite a bit of highlining.</p>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/Z2kesFgfM0E"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </header>
+        </div>
+      </section>
 
-        <section id="greeting" class="wrapper style1 special" style="opacity: 0.98">
-          <div class="inner">
-            <header class="major">
-              <p>Over the years I've done quite a bit of highlining.</p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Z2kesFgfM0E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </header>
-          </div>
-        </section>
-
-        <section id="greeting" class="wrapper style2 special" style="opacity: 0.98">
-          <div class="inner">
-            <header class="major">
-              <p>And I travel quite a bit with this lady (we also do non-travel related things together).</p>
-              <img src="/images/balidavejo.jpg" style="width: 560px;"/>
-            </header>
-          </div>
-        </section>
-        <!-- Two -->
-<!--           <section id="landing_pages" class="wrapper alt style2">{%
+      <section
+        id="greeting"
+        class="wrapper style2 special"
+        style="opacity: 0.98"
+      >
+        <div class="inner">
+          <header class="major">
+            <p>
+              And I travel quite a bit with this lady (we also do non-travel
+              related things together).
+            </p>
+            <img src="/images/balidavejo.jpg" style="width: 560px" />
+          </header>
+        </div>
+      </section>
+      <!-- Two -->
+      <!--           <section id="landing_pages" class="wrapper alt style2">{%
             assign sorted_pages = site.pages | sort:"id" %}{%
             for my_page in sorted_pages %}{%
               if my_page.title %}{%
@@ -123,59 +211,57 @@
             endfor %}
           </section> -->
 
-        <!-- Three -->{%
-      if site.tags.featured %}
-          <section id="landing_features" class="wrapper style3 special">
-            <div class="inner">
-              <header class="major">
-                <h2>{{ site.features-title }}</h2>
-                <!-- <p>Blog posts with decent content</p> -->
-              </header>
-              <ul class="features">{%
-                for my_post in site.posts %}{%
-                  if my_post.tags contains 'featured' %}{%
-                    assign i = i | plus:1 %}
-                <li class="icon fa-{% if my_post.icon %}{{ my_post.icon }}{% else %}heart-o{% endif %}"><!-- featured:{{ i }} -->
-                  <a href="{{ my_post.url | prepend:site.baseurl }}">
-                  <div class="container">
+      <!-- Three -->{% if site.tags.featured %}
+      <section id="landing_features" class="wrapper style3 special">
+        <div class="inner">
+          <header class="major">
+            <h2>{{ site.features-title }}</h2>
+            <!-- <p>Blog posts with decent content</p> -->
+          </header>
+          <ul class="features">
+            {% for my_post in site.posts %}{% if my_post.tags contains
+            'featured' %}{% assign i = i | plus:1 %}
+            <li
+              class="icon fa-{% if my_post.icon %}{{ my_post.icon }}{% else %}heart-o{% endif %}"
+            >
+              <!-- featured:{{ i }} -->
+              <a href="{{ my_post.url | prepend:site.baseurl }}">
+                <div class="container">
                   <h3>{{ my_post.title }}</h3>
-                  <p>{{ my_post.data}}<br />{{ my_post.excerpt | strip_html | truncatewords: 16 }}</p>
-                  </div>
-                  </a>
-                </li>{%
-                    if i == 8 %}{%
-                      break %}{%
-                    endif %}{%
-                  endif %}{%
-                endfor %}
-              </ul>
-            </div>
-          </section>{%
-      endif %}
+                  <p>
+                    {{ my_post.data}}<br />{{ my_post.excerpt | strip_html |
+                    truncatewords: 16 }}
+                  </p>
+                </div>
+              </a>
+            </li>
+            {% if i == 8 %}{% break %}{% endif %}{% endif %}{% endfor %}
+          </ul>
+        </div>
+      </section>
+      {% endif %}
 
-        <!-- CTA -->
-        {%
-      if false %}
-          <section id="cta" class="wrapper style4">
-            <div class="inner">
-              <header>
-                <h2>{{ site.closing-head }}</h2>
-                <p>{{ site.closing-para }}</p>
-              </header>
-              <ul class="actions vertical">
-                <!-- <li><a href="#" class="button fit special">Activate</a></li> -->
-                <li><a href="{{ '/contact/' | prepend: site.baseurl }}" class="button fit special">Contact</a></li>
-              </ul>
-            </div>
-          </section>{%
-      endif %}
-
-      {% include footer.html %}
-
-      {% include scripts.html %}
-
+      <!-- CTA -->
+      {% if false %}
+      <section id="cta" class="wrapper style4">
+        <div class="inner">
+          <header>
+            <h2>{{ site.closing-head }}</h2>
+            <p>{{ site.closing-para }}</p>
+          </header>
+          <ul class="actions vertical">
+            <!-- <li><a href="#" class="button fit special">Activate</a></li> -->
+            <li>
+              <a
+                href="{{ '/contact/' | prepend: site.baseurl }}"
+                class="button fit special"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      {% endif %} {% include footer.html %} {% include scripts.html %}
     </div>
-
   </body>
-
 </html>

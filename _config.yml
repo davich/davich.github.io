@@ -1,6 +1,5 @@
 # Welcome to Jekyll!
 
-
 # In addition to these settings, there is a file _data/tokens-template.yml
 # that you'll want to customize for your site. It's named 'tokens' because
 # that was it's original purpose, but because tokens.yml is .gitexcluded, it's
@@ -15,14 +14,16 @@ title: David Carlin
 description: a dumping ground for whatever I want to put online
 owner:
   name: David Carlin # or company name
-  url: "http://davidcarlin.com.au" # your URL
-first_published: 2019 # if migrating another site, the year of your first publish
-                      # Must be a 4-digit integer year (math is used on it)
-url: "http://davidcarlin.com.au" # the base hostname & protocol for this site
-baseurl: "" # the subpath of your site, e.g. /blog
-            # Note you'll have to move your robots.txt to the root if you want it used.
-            # And list multiple sitemaps if there are other subdirectories you want indexed
-            # besides this blog.
+  url: "http://davec.au" # your URL
+first_published:
+  2019 # if migrating another site, the year of your first publish
+  # Must be a 4-digit integer year (math is used on it)
+url: "http://davec.au" # the base hostname & protocol for this site
+baseurl:
+  "" # the subpath of your site, e.g. /blog
+  # Note you'll have to move your robots.txt to the root if you want it used.
+  # And list multiple sitemaps if there are other subdirectories you want indexed
+  # besides this blog.
 lang: en-us # used in HTML lang attributes
 
 # on landing page
@@ -30,9 +31,9 @@ lang: en-us # used in HTML lang attributes
 greeting:
   title: Welcome
   text: >
-    I'm a software developer/manager from Melbourne, Australia.<br>
+    I'm a (kinda retired) software engineer from Melbourne, Australia.<br>
     I like to be in the outdoors. Camping, climbing, slacklining, hiking, etc.<br>
-    I like playing music.
+    I like playing music. And listening to music.
 # - displayed at the bottom
 closing-head: _Your closing_
 closing-para: _Your detailed closing_
@@ -111,8 +112,8 @@ permalink: /:categories/:title.html
 markdown: kramdown
 #sass:
 #  style: compressed
-exclude: ['site.bat','compose.rb','README.md']
-include: ['_pages','.htaccess']
+exclude: ["site.bat", "compose.rb", "README.md"]
+include: ["_pages", ".htaccess"]
 defaults:
   - scope:
       path: _pages
